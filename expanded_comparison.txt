@@ -1,0 +1,296 @@
+====================================================================================================
+COMPREHENSIVE QEC FRAMEWORK COMPARISON
+====================================================================================================
+
+
+====================================================================================================
+TYPE
+====================================================================================================
+Loom            | Full-stack QEC toolkit
+Deltakit        | SDK + Learning platform
+Stim            | Stabilizer circuit simulator
+PyMatching      | Decoder library
+qLDPC           | LDPC code library
+MQT QECC        | QEC toolkit
+Qiskit          | General quantum framework
+
+====================================================================================================
+PRIMARY FOCUS
+====================================================================================================
+Loom            | Visual design & lattice surgery
+Deltakit        | Learning & deployment pipeline
+Stim            | High-performance QEC simulation
+PyMatching      | Minimum-weight perfect matching
+qLDPC           | Hardware-efficient codes
+MQT QECC        | Design automation
+Qiskit          | Full quantum computing stack
+
+====================================================================================================
+UNIQUE STRENGTH
+====================================================================================================
+Loom            | Entwine visual GUI for lattice surgery
+Deltakit        | Comprehensive interactive textbook
+Stim            | Extreme speed (198 papers in 2024)
+PyMatching      | 100-1000x faster than v1
+qLDPC           | 10-100x qubit reduction
+MQT QECC        | Full stack coverage
+Qiskit          | Industry standard, IBM hardware
+
+====================================================================================================
+BEST FOR
+====================================================================================================
+Loom            | Research, visual prototyping, education
+Deltakit        | Learning, production deployment
+Stim            | Fast simulation, research backbone
+PyMatching      | Fast decoding of surface codes
+qLDPC           | Hardware-aware optimization
+MQT QECC        | Research, compilation
+Qiskit          | IBM ecosystem, general QC
+
+====================================================================================================
+BACKEND/LAYER
+====================================================================================================
+Loom            | High-level design layer
+Deltakit        | High-level with hardware focus
+Stim            | Low-level simulation engine
+PyMatching      | Decoder layer
+qLDPC           | Code design layer
+MQT QECC        | Multi-layer toolkit
+Qiskit          | Full stack platform
+
+====================================================================================================
+ECOSYSTEM LAYERS AND RELATIONSHIPS
+====================================================================================================
+
+    ┌─────────────────────────────────────────────────────────────────┐
+    │  HIGH-LEVEL DESIGN & LEARNING                                   │
+    │  • Loom (visual design, lattice surgery)                        │
+    │  • Deltakit (learning, textbook)                                │
+    │  • Qiskit (full platform)                                       │
+    └────────────────────────┬────────────────────────────────────────┘
+                             │
+    ┌────────────────────────┴────────────────────────────────────────┐
+    │  CODE DESIGN & OPTIMIZATION                                     │
+    │  • qLDPC (hardware-efficient LDPC codes)                        │
+    │  • MQT QECC (synthesis & compilation)                           │
+    └────────────────────────┬────────────────────────────────────────┘
+                             │
+    ┌────────────────────────┴────────────────────────────────────────┐
+    │  SIMULATION ENGINE                                              │
+    │  • Stim (high-performance stabilizer simulation)                │
+    │  • Qiskit Aer (general quantum simulation with noise)           │
+    └────────────────────────┬────────────────────────────────────────┘
+                             │
+    ┌────────────────────────┴────────────────────────────────────────┐
+    │  DECODING                                                       │
+    │  • PyMatching (MWPM decoder)                                    │
+    │  • Deltakit cloud decoders (proprietary)                        │
+    │  • Various other decoder implementations                        │
+    └─────────────────────────────────────────────────────────────────┘
+    
+
+====================================================================================================
+KEY DISTINCTIONS
+====================================================================================================
+
+    DIFFERENT SCOPE LEVELS:
+    
+    1. FULL PLATFORMS (End-to-end solutions):
+       • Loom: Design → Simulation (via Stim backend)
+       • Deltakit: Learning → Hardware deployment
+       • Qiskit: General quantum computing with QEC features
+    
+    2. SPECIALIZED LIBRARIES (Specific tasks):
+       • Stim: THE simulation engine (used by many others)
+       • PyMatching: THE decoder library (used by many others)
+       • qLDPC: Code design for hardware efficiency
+       • MQT: Compilation and synthesis tools
+    
+    3. NOT DIRECTLY COMPARABLE:
+       Comparing Loom vs Stim is like comparing:
+       • A car (full vehicle) vs an engine (component)
+       • Loom USES Stim as its backend
+       • Deltakit can also use Stim for simulation
+    
+
+====================================================================================================
+REVISED COMPARISON FRAMEWORK
+====================================================================================================
+
+    TIER 1: High-Level Platforms (Direct Competitors)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Compare THESE directly:
+    
+    • Loom vs Deltakit vs Qiskit QEC features
+      - All provide end-to-end QEC workflows
+      - Different approaches: visual vs textbook vs enterprise
+      - Choice depends on: research vs learning vs production
+    
+    TIER 2: Core Infrastructure (Complementary, Not Competing)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    These are USED BY Tier 1 platforms:
+    
+    • Stim: Simulation backbone (nearly universal)
+    • PyMatching: Decoder standard (widely used)
+    • qLDPC: Specialized code library
+    • MQT: Compilation toolkit
+    
+    → You typically use Tier 1 platforms which internally use Tier 2 libraries
+    → Or use Tier 2 directly if building custom solutions
+    
+
+====================================================================================================
+USAGE RECOMMENDATIONS BY SCENARIO
+====================================================================================================
+
+    SCENARIO 1: "I want to learn QEC from scratch"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    BEST CHOICE: Deltakit
+    - Structured textbook from basics to advanced
+    - Interactive exercises
+    - Clear learning path
+    
+    ALSO CONSIDER: Qiskit tutorials
+    - Extensive documentation
+    - Large community support
+    
+    SCENARIO 2: "I need to design and visualize lattice surgery"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    BEST CHOICE: Loom (Entwine)
+    - Only platform with visual GUI
+    - Drag-and-drop interface
+    - Exports to code
+    
+    NO ALTERNATIVE: This is Loom's unique feature
+    
+    SCENARIO 3: "I need maximum simulation performance"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    BEST CHOICE: Stim directly
+    - Fastest available (industry standard)
+    - Can simulate huge circuits
+    - Used in 198 papers (2024)
+    
+    HIGH-LEVEL WRAPPER: Use Loom or Deltakit
+    - They use Stim backend anyway
+    - Add convenience features
+    
+    SCENARIO 4: "I need to decode surface codes fast"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    BEST CHOICE: PyMatching
+    - Industry standard decoder
+    - 100-1000x faster than alternatives
+    - Works seamlessly with Stim
+    
+    CLOUD ALTERNATIVE: Deltakit
+    - Access to proprietary decoders
+    - May be faster for some cases
+    
+    SCENARIO 5: "I want hardware-efficient codes"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    BEST CHOICE: qLDPC
+    - 10-100x qubit reduction
+    - Optimized for neutral atoms
+    - Cutting-edge research
+    
+    SCENARIO 6: "I'm preparing for production deployment"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    BEST CHOICE: Deltakit
+    - Designed for Deltaflow hardware
+    - Production-ready workflows
+    - Cloud decoder integration
+    
+    ALSO CONSIDER: Qiskit
+    - If using IBM hardware
+    - Enterprise support available
+    
+    SCENARIO 7: "I'm doing academic QEC research"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    STACK APPROACH: Use multiple tools
+    - Stim + PyMatching: Core simulation/decoding
+    - Loom: Visual design when needed
+    - qLDPC: Explore new code families
+    - MQT: Compilation research
+    
+    SCENARIO 8: "I'm building custom QEC solutions"
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    TOOLKIT APPROACH:
+    - Stim: Simulation engine
+    - PyMatching: Decoder
+    - Custom high-level logic
+    - Or fork/extend existing platforms
+    
+
+====================================================================================================
+THE VERDICT: WHAT SHOULD YOU COMPARE?
+====================================================================================================
+
+    COMPARING HIGH-LEVEL PLATFORMS (Apples to Apples):
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
+    Loom vs Deltakit:
+    ✓ FAIR COMPARISON - Both are end-to-end platforms
+    ✓ Different strengths: visual design vs learning
+    ✓ Choice depends on use case
+    
+    Loom/Deltakit vs Qiskit:
+    ✓ FAIR but different scales
+    ✓ Qiskit is broader platform (general QC + QEC)
+    ✓ Loom/Deltakit are QEC-specialized
+    
+    COMPARING INFRASTRUCTURE (Context Required):
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
+    Stim vs Loom:
+    ✗ UNFAIR - Different layers
+    ✓ Better: "Loom uses Stim backend"
+    ✓ Note: You can use Stim directly OR through Loom
+    
+    PyMatching vs Deltakit decoders:
+    ~ PARTIALLY FAIR - Both do decoding
+    ✓ PyMatching: Open-source, standard
+    ✓ Deltakit: Proprietary cloud, possibly faster
+    ✓ Context: Different architectural approaches
+    
+    ORIGINAL COMPARISON WAS CORRECT:
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
+    Your initial Loom vs Deltakit comparison WAS appropriate:
+    • Both are high-level platforms
+    • Similar scope and ambitions
+    • Different approaches to same problem
+    • Direct competitors in the market
+    
+    BUT now you have broader context:
+    • Stim is the engine many platforms use
+    • PyMatching is standard decoder
+    • qLDPC offers alternative code approach
+    • Each tool serves specific purpose
+    
+
+====================================================================================================
+UPDATED RECOMMENDATION
+====================================================================================================
+
+    FOR YOUR COMPARISON DOCUMENT:
+    
+    PRIMARY COMPARISON: Loom vs Deltakit (as originally done)
+    → This remains valid and useful
+    
+    ADD CONTEXT SECTION: "Relationship to Core Infrastructure"
+    → Explain that both use Stim
+    → Mention PyMatching as standard decoder
+    → Note qLDPC as emerging alternative approach
+    → Position Qiskit as broader platform alternative
+    
+    ADD ECOSYSTEM DIAGRAM: Show layers
+    → High-level platforms (Loom, Deltakit)
+    → Core infrastructure (Stim, PyMatching)
+    → Specialized tools (qLDPC, MQT)
+    
+    CONCLUSION:
+    Your original comparison was on-target. The additional frameworks
+    provide important context but don't invalidate the core comparison.
+    They operate at different layers or serve complementary purposes.
+    
+
+====================================================================================================
