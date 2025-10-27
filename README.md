@@ -1,8 +1,12 @@
 # QEC Frameworks
 
 **Quantum Error Correction Frameworks - Exploring the Open-Source Landscape**
+An exploration and comparison of open-source frameworks for quantum error correction (QEC), aimed at researchers, developers, and practitioners working with fault-tolerant quantum computing.
 
-A comprehensive exploration and comparison of open-source frameworks for quantum error correction (QEC), aimed at researchers, developers, and practitioners working with fault-tolerant quantum computing.
+👷‍♂️ WORK IN PROGRESS! STILL UNDERGOING TESTING 🔨.   
+📝 SUGGESTIONS WELCOME 🙏
+
+![image](./Gemini_Generated_Image_e3y47qe3y47qe3y4.png)
 
 ## Overview
 
