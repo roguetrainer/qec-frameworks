@@ -220,7 +220,7 @@ Thanks to the quantum computing community and the developers of open-source QEC 
 ---
 
 **Maintained by**: [@roguetrainer](https://github.com/roguetrainer)  
-**Organization**: Agnostiq  
+**Organization**: N/A  
 **Last Updated**: 2025
 
 For questions, suggestions, or collaboration opportunities, please open an issue or reach out through GitHub.
