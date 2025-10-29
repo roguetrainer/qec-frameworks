@@ -1,226 +1,357 @@
-# QEC Frameworks
-
-**Quantum Error Correction Frameworks - Exploring the Open-Source Landscape**
-An exploration and comparison of open-source frameworks for quantum error correction (QEC), aimed at researchers, developers, and practitioners working with fault-tolerant quantum computing.
+# Quantum Error Correction Frameworks - Getting Started Guide
 
 👷‍♂️ WORK IN PROGRESS! STILL UNDERGOING TESTING 🔨.   
 📝 SUGGESTIONS WELCOME 🙏
 
-![image](./Gemini_Generated_Image_e3y47qe3y47qe3y4.png)
+![QEC Whack-a-mole](./QEC-whack-a-mole.png)
 
-## Overview
+Welcome! This repository contains comprehensive getting-started code and documentation for two leading quantum error correction (QEC) frameworks:
 
-Quantum error correction is essential for building practical, large-scale quantum computers. This repository serves as a resource for understanding and evaluating the various open-source frameworks available for implementing and researching QEC codes, decoders, and error mitigation techniques.
+## 📚 Contents
 
-## What is Quantum Error Correction?
+1. **loom_getting_started.py** - Complete guide to Loom by Entropica Labs
+2. **deltakit_getting_started.py** - Complete guide to Deltakit by Riverlane
+3. **COMPARISON.md** - Detailed comparison of both frameworks
 
-Quantum Error Correction (QEC) addresses the critical challenge of maintaining accurate quantum information despite the inherent fragility of qubits. Unlike classical error correction, QEC must handle:
+## 🚀 Quick Start
 
-- **Bit-flip errors**: Transitions between |0⟩ and |1⟩ states
-- **Phase-flip errors**: Changes to the relative phase of quantum states
-- **Decoherence**: Loss of quantum properties over time
+### Loom by Entropica Labs
 
-QEC works by encoding logical qubits across multiple physical qubits using quantum entanglement and superposition, allowing errors to be detected and corrected without collapsing the quantum state.
+**What is Loom?**
+Loom is an open-source Python library for designing, simulating, and validating quantum error correction codes. It features Entwine, a visual GUI for drag-and-drop lattice surgery design.
 
-## Featured Frameworks
-
-### 1. **Qiskit QEC**
-- **Organization**: Qiskit Community (IBM)
-- **Repository**: [qiskit-community/qiskit-qec](https://github.com/qiskit-community/qiskit-qec)
-- **Language**: Python
-- **Key Features**:
-  - Open-source framework for developers, experimentalists, and theorists
-  - Comprehensive support for stabilizer codes
-  - Pauli operator representations and conversions
-  - Built on the Qiskit ecosystem
-- **Use Cases**: Research, education, and development of QEC codes
-- **Status**: Early development stage with active community contributions
-
-### 2. **CUDA-Q QEC**
-- **Organization**: NVIDIA
-- **Documentation**: [CUDA-QX QEC](https://nvidia.github.io/cudaqx/components/qec/introduction.html)
-- **Language**: C++/CUDA
-- **Key Features**:
-  - GPU-accelerated quantum error correction
-  - Extensible decoder framework (`cudaq::qec::decoder`)
-  - Pre-built codes: Steane code [[7,1,3]], Repetition codes
-  - Memory circuit experiments for testing QEC performance
-  - CSS (Calderbank-Shor-Steane) code support
-- **Use Cases**: High-performance QEC simulations, numerical experiments
-- **Advantage**: Hardware acceleration for large-scale simulations
-
-### 3. **QEC-Playground**
-- **Repository**: [yuewuo/QEC-Playground](https://github.com/yuewuo/QEC-Playground)
-- **Language**: Rust, Python bindings
-- **Key Features**:
-  - Educational tool and research platform
-  - Focus on surface codes
-  - 3D GUI for visualization
-  - Multiple decoder implementations (MWPM, ML-optimized)
-  - FPGA support
-  - Benchmarking tools for logical error rates
-- **Use Cases**: Education, surface code research, interactive learning
-- **Advantage**: Visual interface and educational focus
-
-### 4. **QDX (Quantum Discovery with Jax)**
-- **Repository**: [jolle-ag/qdx](https://github.com/jolle-ag/qdx)
-- **Language**: Python (Jax)
-- **Key Features**:
-  - AI-powered QEC code discovery using reinforcement learning
-  - Discovers codes and encoding circuits from scratch
-  - Noise-aware training for multiple noise models
-  - GPU-parallelized training with vectorized environments
-  - Clifford circuit simulation in Jax
-- **Use Cases**: Automated code discovery, RL research in QEC
-- **Advantage**: Machine learning approach to QEC code design
-
-## Common QEC Codes
-
-### Stabilizer Codes
-- **Shor Code**: [[9,1,3]] - Encodes one logical qubit into nine physical qubits
-- **Steane Code**: [[7,1,3]] - Seven-qubit code, more efficient than Shor
-- **Surface Code**: 2D lattice-based topological code with local measurements
-- **Color Codes**: Multi-dimensional topological codes
-- **LDPC Codes**: Quantum low-density parity-check codes for reduced overhead
-
-### Code Properties
-- **Distance (d)**: Number of errors the code can detect/correct
-- **Encoding**: Number of physical qubits per logical qubit
-- **Threshold**: Maximum physical error rate for fault tolerance
-
-## Framework Comparison
-
-| Framework | Language | GPU Support | Decoders | ML/AI | Education | Production-Ready |
-|-----------|----------|-------------|----------|-------|-----------|------------------|
-| Qiskit QEC | Python | No | Yes | Partial | ✓ | Early Stage |
-| CUDA-Q QEC | C++/CUDA | ✓ | Yes | No | Partial | Beta |
-| QEC-Playground | Rust | No | Multiple | Yes | ✓ | Research |
-| QDX | Python/Jax | ✓ | RL-based | ✓ | No | Research |
-
-## Getting Started
-
-### Prerequisites
-- Python 3.8+ (for Python-based frameworks)
-- CUDA toolkit (for GPU-accelerated frameworks)
-- Rust toolchain (for QEC-Playground)
-- Basic understanding of quantum computing and linear algebra
-
-### Installation Examples
-
-#### Qiskit QEC
+**Installation:**
 ```bash
-pip install qiskit-qec
+pip install loom
 ```
 
-#### CUDA-Q QEC
-```bash
-# Follow NVIDIA CUDA-Q installation guide
-pip install cudaq
+**Key Features:**
+- ✅ EKA data structure (single source of truth)
+- ✅ Entwine visual GUI for lattice surgery
+- ✅ Pre-built codes (Surface, Shor, Steane, Repetition)
+- ✅ Multiple simulation backends (Stim, Qiskit)
+- ✅ Integration with PennyLane/Catalyst
+- ✅ Fully open source (Apache 2.0)
+
+**First Example:**
+```python
+from loom.code_factory import RepetitionCodeFactory
+
+# Create a distance-3 repetition code
+code_factory = RepetitionCodeFactory(distance=3)
+code = code_factory.generate_code()
+eka = code.to_eka()
+
+print(f"Created code with {len(eka.data_qubits)} data qubits")
 ```
 
-#### QEC-Playground
-```bash
-git clone https://github.com/yuewuo/QEC-Playground
-cd QEC-Playground/backend/rust
-cargo build --release
-```
-
-#### QDX
-```bash
-git clone https://github.com/jolle-ag/qdx
-cd qdx
-pip install -e .
-```
-
-## Research Areas
-
-### Active Research Topics
-1. **Low-Overhead QEC**: Developing codes with reduced physical qubit requirements
-2. **Machine Learning Decoders**: Neural network-based error decoding
-3. **Fault-Tolerant Operations**: Transversal gates and magic state distillation
-4. **Real-Time Decoding**: Fast syndrome extraction and correction
-5. **Noise-Adaptive Codes**: QEC strategies that adapt to hardware noise profiles
-6. **Topological Codes**: Surface codes, color codes, and their variants
-
-## Resources
-
-### Learning Materials
-- [Qiskit QEC Documentation](https://qiskit-community.github.io/qiskit-qec/)
-- [Nielsen & Chuang - Quantum Computation and Quantum Information](https://www.cambridge.org/core/books/quantum-computation-and-quantum-information/01E10196D0A682A6AEFFEA52D53BE9AE)
-- Gottesman's Stabilizer Formalism Papers
-
-### Community
-- Qiskit Slack: QEC channel
-- arXiv: quant-ph category (Quantum Error Correction)
-- Q2B Conference and Quantum Error Correction Workshops
-
-## Contributing
-
-This repository welcomes contributions including:
-- Framework comparisons and benchmarks
-- Tutorial notebooks
-- Documentation improvements
-- New framework additions
-- Performance analyses
-
-Please open an issue or pull request to contribute.
-
-## Applications
-
-### Near-Term (NISQ Era)
-- Error mitigation techniques
-- Quantum chemistry simulations with error awareness
-- Variational quantum algorithms with error suppression
-
-### Long-Term (Fault-Tolerant Era)
-- Logical quantum processors
-- Large-scale quantum algorithms (Shor's, Grover's)
-- Quantum simulation of complex systems
-- Cryptography and secure communications
-
-## Challenges
-
-Current challenges in QEC implementation:
-- **Overhead**: Thousands of physical qubits per logical qubit
-- **Real-Time Processing**: Fast classical processing for syndrome measurement
-- **Scalability**: Coordinating error correction across large quantum processors
-- **Hardware Constraints**: Limited qubit connectivity and gate fidelities
-- **Threshold Requirements**: Achieving error rates below fault-tolerance thresholds
-
-## Future Directions
-
-- Integration of AI/ML for adaptive error correction
-- Hardware-efficient codes for specific quantum architectures
-- Cross-platform QEC standards and interfaces
-- Hybrid classical-quantum error correction strategies
-- Bosonic codes for continuous-variable quantum computing
-
-## License
-
-This repository is provided for educational and research purposes. Please refer to individual framework licenses for usage terms.
-
-## Citation
-
-If you use this repository or the frameworks discussed here in your research, please cite the relevant papers and repositories:
-
-```bibtex
-@misc{qec-frameworks,
-  author = {Ian Buckley},
-  title = {QEC Frameworks: Exploring Open-Source Quantum Error Correction},
-  year = {2025},
-  publisher = {GitHub},
-  url = {https://github.com/roguetrainer/qec-frameworks}
-}
-```
-
-## Acknowledgments
-
-Thanks to the quantum computing community and the developers of open-source QEC frameworks who make this research accessible to all.
+**Resources:**
+- Documentation: https://loom-api-docs.entropicalabs.com/
+- Design Guide: https://loom-docs.entropicalabs.com/
+- Entwine GUI: https://entwine.entropicalabs.com/
+- GitHub: https://github.com/entropicalabs/el-loom
 
 ---
 
-**Maintained by**: [@roguetrainer](https://github.com/roguetrainer)  
-**Organization**: N/A  
-**Last Updated**: 2025
+### Deltakit by Riverlane
 
-For questions, suggestions, or collaboration opportunities, please open an issue or reach out through GitHub.
+**What is Deltakit?**
+Deltakit is a comprehensive SDK for learning, developing, and deploying quantum error correction. It includes an interactive textbook and connects to Riverlane's cloud-based high-performance decoders.
+
+**Installation:**
+```bash
+# Step 1: Get your free token at https://deltakit.riverlane.com/
+# Step 2: Install
+pip install deltakit
+
+# Step 3: Configure
+python -c "from deltakit import Client; Client.set_token('YOUR_TOKEN')"
+```
+
+**Key Features:**
+- ✅ Interactive textbook with 4 learning modules
+- ✅ Cloud-connected proprietary decoders (LCD, BP-AC)
+- ✅ Advanced noise models including leakage
+- ✅ qLDPC code support (bivariate bicycle codes)
+- ✅ Deltaflow integration for hardware deployment
+- ✅ Production-ready workflows
+
+**First Example:**
+```python
+from deltakit import SurfaceCode, MemoryExperiment
+
+# Create a surface code
+code = SurfaceCode(distance=3)
+
+# Run a memory experiment
+experiment = MemoryExperiment(code=code, num_rounds=5)
+results = experiment.run(shots=1000)
+
+print(f"Logical error rate: {results.logical_error_rate:.4f}")
+```
+
+**Resources:**
+- Website: https://deltakit.riverlane.com/
+- Interactive Textbook: https://deltakit.riverlane.com/textbook
+- Documentation: https://deltakit.riverlane.com/docs
+- Get Token: https://deltakit.riverlane.com/ (free registration)
+
+---
+
+## 🎯 Which Framework Should You Use?
+
+### Use Loom if you:
+- Want to design custom QEC codes
+- Need visual circuit design (Entwine GUI)
+- Work extensively with lattice surgery
+- Prefer full open-source solutions
+- Do academic research requiring flexibility
+- Want integration with PennyLane
+
+### Use Deltakit if you:
+- Are learning QEC from scratch (interactive textbook)
+- Need production-ready QEC workflows
+- Want access to state-of-the-art decoders
+- Work with qLDPC codes
+- Plan hardware deployment via Deltaflow
+- Need realistic leakage modeling
+
+### Use Both if you:
+- Want the best of both worlds! 🎉
+- Many practitioners use Deltakit's textbook to learn, then Loom for custom development
+- Or use Loom for prototyping and Deltakit for production deployment
+
+---
+
+## 📖 Detailed Examples Included
+
+### Loom Examples (10 examples)
+1. ✅ Creating repetition codes
+2. ✅ Working with surface codes
+3. ✅ Building memory experiments
+4. ✅ Stim backend simulation
+5. ✅ Various QEC codes (Shor, Steane, Five-qubit)
+6. ✅ Lattice surgery operations
+7. ✅ Custom circuit building with EKA
+8. ✅ Entwine visual GUI integration
+9. ✅ Syndrome decoding
+10. ✅ Threshold analysis
+
+### Deltakit Examples (13 examples)
+1. ✅ Setup and configuration
+2. ✅ Repetition code circuits
+3. ✅ Surface code implementation
+4. ✅ Memory experiments
+5. ✅ Decoder comparison (MWPM, LCD, BP-AC)
+6. ✅ Advanced noise models
+7. ✅ qLDPC codes (bivariate bicycle)
+8. ✅ Leakage-aware simulation
+9. ✅ Stability experiments
+10. ✅ Circuit transpilation
+11. ✅ Visualization and analysis
+12. ✅ Deltaflow hardware integration
+13. ✅ Interactive textbook workflow
+
+---
+
+## 🔬 Key Concepts Explained
+
+### Quantum Error Correction (QEC)
+Quantum computers are extremely sensitive to noise. QEC protects quantum information by encoding it across multiple physical qubits, allowing errors to be detected and corrected without destroying the quantum state.
+
+### Stabilizers
+Mathematical operators that define the QEC code. Measuring stabilizers (syndrome extraction) reveals error information without collapsing the logical quantum state.
+
+### Code Distance
+The minimum number of single-qubit errors needed to cause a logical error. Higher distance = better protection but more qubits required. Distance-3 can correct 1 error, distance-5 can correct 2, etc.
+
+### Surface Codes
+The leading QEC code for near-term quantum computers. Uses a 2D lattice of qubits with stabilizers on plaquettes. High error threshold (~1%) and practical implementation.
+
+### Lattice Surgery
+A technique for performing logical operations on surface code patches by merging and splitting them. Enables universal quantum computation on surface codes.
+
+### qLDPC Codes
+Quantum Low-Density Parity-Check codes. Next-generation codes with better encoding rates (more logical qubits per physical qubit) but more complex decoding.
+
+### Decoders
+Algorithms that analyze syndrome measurements to determine the most likely errors. Examples:
+- **MWPM**: Minimum Weight Perfect Matching
+- **LCD**: Local Clustering Decoder (Riverlane proprietary)
+- **BP-AC**: Belief Propagation with Automorphism Clustering
+
+---
+
+## 🛠️ Technical Requirements
+
+### For Loom:
+- Python 3.8+
+- Optional: Poetry for development
+- Stim backend recommended for fast simulation
+- Works on Linux, macOS, Windows
+
+### For Deltakit:
+- Python 3.8+
+- Free account token from deltakit.riverlane.com
+- Internet connection for cloud services
+- Works on Linux, macOS, Windows
+
+---
+
+## 📊 Performance Notes
+
+### Simulation Speed:
+- **Loom** with Stim backend: Very fast for stabilizer circuits
+- **Deltakit** with cloud decoders: Optimized for large-scale experiments
+
+### Code Distance Scaling:
+- Distance-3: ~10-20 physical qubits
+- Distance-5: ~40-50 physical qubits
+- Distance-7: ~90-100 physical qubits
+- Distance-9: ~160-180 physical qubits
+
+### Memory Experiments:
+- 1000 shots at distance-3: < 1 second
+- 1000 shots at distance-7: Few seconds
+- Real-time decoding needed for hardware: Use Deltaflow
+
+---
+
+## 🤝 Community and Support
+
+### Loom Community:
+- GitHub Issues: Report bugs, request features
+- Email: info@entropicalabs.com
+- QEC Challenge: Annual competition
+- Singapore-based team
+
+### Deltakit Community:
+- Community Forums: User discussions
+- VP of QEC Community: Liz Durst (former Qiskit lead)
+- Enterprise Support: Available for partnerships
+- Cambridge UK-based team
+
+---
+
+## 📈 Learning Path
+
+### Beginner (New to QEC):
+1. Start with **Deltakit textbook Module 1** - Learn why QEC is needed
+2. Try **Deltakit textbook Module 2** - Understand repetition codes
+3. Run **deltakit_getting_started.py examples 1-4**
+4. Read **COMPARISON.md** to understand both frameworks
+
+### Intermediate (Know QEC basics):
+1. Work through **Deltakit textbook Modules 3-4** - Surface codes and decoding
+2. Try **Loom's Entwine GUI** - Visual design experience
+3. Run **loom_getting_started.py examples 1-6**
+4. Run **deltakit_getting_started.py examples 5-9**
+
+### Advanced (Research/Development):
+1. Study **Loom's EKA architecture** - Fine-grained control
+2. Explore **Deltakit's qLDPC codes** - Next-gen codes
+3. Try **lattice surgery** in both frameworks
+4. Compare **decoder performance** (examples included)
+5. Consider **hardware deployment** via Deltaflow
+
+---
+
+## 🔮 Future Directions
+
+### Industry Trends:
+- **Error Threshold**: Current ~1% for surface codes, improving
+- **Logical Qubits**: Moving from 10-100 toward 1000-10000
+- **Real-time Decoding**: Essential for hardware, both platforms addressing this
+- **qLDPC Adoption**: Growing interest in better encoding rates
+
+### Framework Evolution:
+- **Loom → Quilt**: Entropica's vision for Fault-Tolerance OS
+- **Deltakit → MegaQuOp**: Riverlane's goal for million quantum operations
+- **Convergence**: Both moving toward hardware integration
+
+---
+
+## 💡 Tips for Success
+
+1. **Start Simple**: Begin with repetition codes before surface codes
+2. **Use Visualization**: Leverage Loom's Entwine or Deltakit's plotting
+3. **Compare Decoders**: Try different decoders on the same problem
+4. **Understand Thresholds**: Run threshold analyses to build intuition
+5. **Read Papers**: Both frameworks cite key QEC papers
+6. **Join Communities**: Engage with other practitioners
+7. **Experiment**: Modify the example code to learn deeply
+
+---
+
+## 📚 Recommended Reading
+
+### Essential Papers:
+1. Surface codes: "Surface codes: Towards practical large-scale quantum computation" (Fowler et al., 2012)
+2. Stabilizer formalism: "Stabilizer Codes and Quantum Error Correction" (Gottesman, 1997)
+3. Thresholds: "Overhead and noise threshold of fault-tolerant quantum error correction" (Tomita & Svore, 2014)
+
+### Books:
+1. "Quantum Error Correction" by Lidar & Brun
+2. "Quantum Computation and Quantum Information" by Nielsen & Chuang
+
+### Online Resources:
+1. Deltakit Interactive Textbook (best for beginners)
+2. Loom Documentation (best for implementers)
+3. Qiskit Textbook QEC chapter
+
+---
+
+## 🎓 Citation
+
+If you use these frameworks in your research:
+
+**For Loom:**
+```
+@software{loom2025,
+  title = {Loom: Quantum Error Correction Framework},
+  author = {Entropica Labs},
+  year = {2025},
+  url = {https://github.com/entropicalabs/el-loom}
+}
+```
+
+**For Deltakit:**
+```
+@software{deltakit2025,
+  title = {Deltakit: Quantum Error Correction SDK},
+  author = {Riverlane},
+  year = {2025},
+  url = {https://deltakit.riverlane.com/}
+}
+```
+
+---
+
+## 🙏 Acknowledgments
+
+- **Entropica Labs** for open-sourcing Loom and creating Entwine
+- **Riverlane** for Deltakit and advancing real-time QEC
+- The **quantum computing community** for foundational research
+- All **contributors** to both projects
+
+---
+
+## 📝 License
+
+- **This guide**: MIT License (examples and documentation)
+- **Loom**: Apache 2.0 License
+- **Deltakit**: Check Riverlane's licensing terms
+
+---
+
+## 🚀 Get Started Now!
+
+1. Choose your framework (or try both!)
+2. Run the getting started code
+3. Read the comparison document
+4. Join the community
+5. Start building quantum error correction!
+
+**Questions?** Open an issue or reach out to the respective communities.
+
+**Happy quantum error correcting!** 🎉🔬✨
