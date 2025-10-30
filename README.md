@@ -12,6 +12,7 @@ Welcome! This repository contains comprehensive getting-started code and documen
 1. **loom_getting_started.py** - Complete guide to Loom by Entropica Labs
 2. **deltakit_getting_started.py** - Complete guide to Deltakit by Riverlane
 3. **COMPARISON.md** - Detailed comparison of both frameworks
+4. **qec_loom_deltakit_tutorial.ipynb** - Jupyter notebook
 
 ## 🚀 Quick Start
 
